@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WsJeeService } from 'src/app/services/ws-jee.service';
 
 @Component({
   selector: 'app-login',
@@ -7,17 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public userl:any = []
+
+  constructor(private WsPersonas : WsJeeService) { }
 
   ngOnInit(): void {
+    const c = {
+      
+      cedula:"0105564167",
+      activo: true,
+      apellido: "Cr",
+      cambioPassword: false,
+      correo: "ghjj@gmail.com",
+      nombre: "Eduardo",
+      rol: "cliente"
+    
+    }
+    this.WsPersonas.Login(c).subscribe((res) => console.log(res))
   }
 
-  username:string = ""
-  password:string = ""
+  uname:string = ""
+  pword:string = ""
   msg:string = ""
 
   getUP():void{
-    this.msg = this.username + this.password
+    this.msg = this.uname + this.pword
   }
 
 }

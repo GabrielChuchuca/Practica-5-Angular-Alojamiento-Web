@@ -12,13 +12,7 @@ export class PersonasComponent implements OnInit {
   constructor(private WsPersonas : WsJeeService) { }
 
   ngOnInit(): void {
-    this.WsPersonas.getPersonas().
-    subscribe((response : any) => {
-      this.personas = response
-      console.log(this.personas)
-    }, (error:any) =>{
-      console.log(error)
-    })
+  
   }
 
 }
