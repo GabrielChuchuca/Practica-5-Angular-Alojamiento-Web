@@ -1,0 +1,10 @@
+<h1 style="color: greenyellow;">LOGIN</h1>
+<div>
+    <form>
+        <label>Username: <input type="text" placeholder="username" [(ngModel)] = "username" name="username"></label><br/><br/>
+        <label>Password: <input type="text" name="password" placeholder="password" [(ngModel)] = "password"></label><br/><br/>
+        <button (click)="getUP()">Logearme</button>
+        {{ msg }}
+    </form>
+</div>
+
