@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user';
 import { WsJeeService } from 'src/app/services/ws-jee.service';
 
 @Component({
@@ -8,27 +10,13 @@ import { WsJeeService } from 'src/app/services/ws-jee.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public User:Observable<User>
+  public u:any = []
 
-  public userl:any = []
+  constructor(private WsPersonas : WsJeeService) { }
 
-  constructor(private http : HttpClient, private WsPersonas : WsJeeService) { }
   ngOnInit(): void {
-    let c = new URLSearchParams()
-    c.set('correo', "johana@gmail.com"),
-    c.set('password', "12345")
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
-    }
-    this.http.post<any>("http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/usuario/login", c, httpOptions).subscribe(res => console.log(res))
-    /*const c = {
-      
-      usuario:"0105564167",
-      password:"12345"
-    
-    }*/
-    //this.WsPersonas.Login(c).subscribe(re => 
-      //console.log(re)
-    //)
+
   }
 
   uname:string = ""
@@ -36,7 +24,27 @@ export class LoginComponent implements OnInit {
   msg:string = ""
 
   getUP():void{
-    this.msg = this.uname + this.pword
+    let c = new URLSearchParams()
+    if(this.uname != "" && this.pword != ""){
+      c.set('correo', this.uname),
+      c.set('password', this.pword)
+      
+      this.WsPersonas.Login(c).subscribe((res) => {
+          console.log(res)
+          if (res.activo == true){
+            this.msg = "USUARIO ACTIVO"
+          }else{
+            this.msg = "USUARIO INACTIVO, CONSULTE CON EL ADMINSITRADOR PARA ACTIVAR SU CUENTA"
+          }
+        },
+        (error) => {
+          console.log("E AQUI EL ERROR", error)
+          this.msg = "USUARIO NO ENCONTRADO / NO EXISTE"
+        }
+      )
+    }else{
+      this.msg = "Faltan credenciales"
+    }
   }
 
 }
