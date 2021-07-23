@@ -1,9 +1,9 @@
 <div class="container">
-    <h1 style="color: greenyellow;">LOGIN</h1>
+    <h1 style="color: greenyellow;" class="text-center">LOGIN</h1>
     <form>
-        <label>Username: <input type="text" placeholder="username" [(ngModel)] = "uname" name="uname"></label><br/><br/>
-        <label>Password: <input type="text" name="password" placeholder="pword" [(ngModel)] = "pword"></label><br/><br/>
-        <button (click)="getUP()">Logearme</button>
+        <label>Correo: <input type="text" placeholder="correo" [(ngModel)] = "uname" name="uname"></label><br/><br/>
+        <label>Password: <input type="text" name="password" placeholder="password" [(ngModel)] = "pword"></label><br/><br/>
+        <button (click)="getUP()" class="btn btn-success">Ingresar</button>
         {{ msg }}
     </form>
     <a routerLink="/registrarse">¿No tienes cuenta?, REGISTRATE</a>

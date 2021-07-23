@@ -1,14 +1,12 @@
-<h1>BIENVENIDO AL CATALOGO</h1>
 <div class="container">
+  <h1 class="text-center">CATALOGO</h1>
   <select name="bodegas" id="bodegas" [(ngModel)]="seleccionado">
     <option value="0">Todo</option>
     <option [value]="b.codigo" *ngFor="let b of bodegas">{{ b.nombre }}</option>
   </select>
-  {{ seleccionado }}
   <br /><br />
   <button (click)="getBIDP(seleccionado)">Ver</button>
   <br /><br />
-  
   <div *ngIf="productos_bodega.length>0; else elseBlock">
     <table class="table table-dark">
       <thead>
