@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { WsJeeService } from 'src/app/services/ws-jee.service';
 
@@ -10,20 +11,21 @@ export class LoginComponent implements OnInit {
 
   public userl:any = []
 
-  constructor(private WsPersonas : WsJeeService) { }
+  constructor(private http : HttpClient, private WsPersonas : WsJeeService) { }
   ngOnInit(): void {
-    const c = new URLSearchParams()
+    let c = new URLSearchParams()
     c.set('correo', "johana@gmail.com"),
     c.set('password', "12345")
+    this.http.post('http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/usuario/login', c).subscribe(res => console.log(res))
     /*const c = {
       
       usuario:"0105564167",
       password:"12345"
     
     }*/
-    this.WsPersonas.Login(c).subscribe(re => 
-      console.log(re)
-    )
+    //this.WsPersonas.Login(c).subscribe(re => 
+      //console.log(re)
+    //)
   }
 
   uname:string = ""
