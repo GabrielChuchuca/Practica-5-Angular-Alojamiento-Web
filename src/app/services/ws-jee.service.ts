@@ -29,10 +29,10 @@ export class WsJeeService {
     return this.http.get('http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/productos/')
   }
 
-  Login(cred:User):Observable<any>{
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json', "Accept-Type": "application/json"})
-    }
-    return this.http.post<any>('http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/usuario/login', cred, httpOptions)
+  Login(cred:any):Observable<any>{
+    /*const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json', "Accept": "application/json"})
+    }*/
+    return this.http.post<any>('http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/usuario/login', cred)
   }
 }
