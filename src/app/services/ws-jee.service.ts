@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, UserResponse } from '../models/user';
 import { catchError, map } from 'rxjs/operators';
@@ -30,9 +30,9 @@ export class WsJeeService {
   }
 
   Login(cred:User):Observable<any>{
-    const headers = { 'Content-Type': 'application/x-www-form-urlencoded', 
-    'Accept': '*/*'
-   };
-    return this.http.post<any>('http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/usuario',cred)
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json', "Accept-Type": "application/json"})
+    }
+    return this.http.post<any>('http://localhost:8080/PruebaJR/services/rest/login', cred, httpOptions)
   }
 }

@@ -15,16 +15,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const c = {
       
-      cedula:"0105564167",
-      activo: true,
-      apellido: "Cr",
-      cambioPassword: false,
-      correo: "ghjj@gmail.com",
-      nombre: "Eduardo",
-      rol: "cliente"
+      usuario:"0105564167",
+      password:"12345"
     
     }
-    this.WsPersonas.Login(c).subscribe((res) => console.log(res))
+    this.WsPersonas.Login(c).subscribe(re => 
+      console.log(re)
+    )
   }
 
   uname:string = ""

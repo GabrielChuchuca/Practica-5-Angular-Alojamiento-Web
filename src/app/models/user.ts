@@ -1,14 +1,14 @@
 export interface User {
-    //correo: string;
-    //password: string;
+    usuario: string;
+    password: string;
 
-    cedula: string,
+    /*cedula: string,
     activo: boolean,
     apellido: string,
     cambioPassword: boolean,
     correo: string,
     nombre: string,
-    rol: string
+    rol: string*/
 
 }
   
