@@ -33,6 +33,6 @@ export class WsJeeService {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json', "Accept-Type": "application/json"})
     }
-    return this.http.post<any>('http://localhost:8080/PruebaJR/services/rest/login', cred, httpOptions)
+    return this.http.post<any>('http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/usuario/login', cred, httpOptions)
   }
 }
