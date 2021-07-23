@@ -3,10 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "heroku-postbuid": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -19,11 +22,14 @@
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
     "bootstrap": "^5.0.2",
+    "express": "^4.17.1",
     "jquery": "^3.6.0",
     "ngx-order-pipe": "^2.1.1",
+    "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
+    "typescript": "~4.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -38,6 +44,13 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
     "typescript": "~4.3.2"
+  },
+  "engines": {
+    "node": "12.18.2",
+    "npm": "6.14.5"
   }
 }
