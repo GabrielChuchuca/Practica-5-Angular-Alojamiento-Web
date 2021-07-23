@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { WsJeeService } from 'src/app/services/ws-jee.service';
 
@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
     let c = new URLSearchParams()
     c.set('correo', "johana@gmail.com"),
     c.set('password', "12345")
-    this.http.post('http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/usuario/login', c).subscribe(res => console.log(res))
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+    }
+    this.http.post<any>("http://localhost:8080/Practica_3_EJB_JSF_JPA/rest/usuario/login", c, httpOptions).subscribe(res => console.log(res))
     /*const c = {
       
       usuario:"0105564167",
